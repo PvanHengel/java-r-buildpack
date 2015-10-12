@@ -187,6 +187,8 @@ echo "PATH set to '$PATH'" | indent
 
 echo "JAVA_HOME set to '$JAVA_HOME'"
 
-R CMD check
+R CMD --version
+
+echo "Next Step"
 
 R CMD javareconf
