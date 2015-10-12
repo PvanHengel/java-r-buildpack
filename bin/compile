@@ -187,7 +187,6 @@ echo "PATH set to '$PATH'" | indent
 
 echo "JAVA_HOME set to '$JAVA_HOME'"
 
-java -version
 echo "Next Step"
 
 sudo R CMD javareconf
