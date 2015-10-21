@@ -154,9 +154,6 @@ which gcc
 ### mkdir /app/vendor/libreadline
 ###cp /app/vendor/gcc/libreadline.so.6 /app/vendor/gcc/libreadline.so.5
 
-cd /app/vendor/gcc
-ln -n ./libreadline.so.6 libreadline.so.5
-
 
 
 # copy over 'r' environment
