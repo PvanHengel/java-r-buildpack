@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GCC_VERSION="4.3.6"
+GCC_VERSION="4.3"
 
 export R_BASE=/app/vendor/R
 export R_HOME=$R_BASE/lib64/R
