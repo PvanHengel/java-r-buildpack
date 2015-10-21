@@ -143,11 +143,16 @@ export R_INCLUDE=$R_HOME/include
 echo "R_HOME set to '$R_HOME'" | indent
 echo "R_INCLUDE set to '$R_INCLUDE'" | indent
 
+echo "GCC Version **********************************************"
+gcc --version
+which gcc
+
 # hack for libreadline shared library version
-cd /lib
-ln -n ./libreadline.so.6 libreadline.so.5
+# cd /lib
+# ln -n ./libreadline.so.6 libreadline.so.5
 ### mkdir /app/vendor/libreadline
 ###cp /app/vendor/gcc/libreadline.so.6 /app/vendor/gcc/libreadline.so.5
+
 
 
 # copy over 'r' environment
@@ -165,8 +170,7 @@ fi
 mkdir -p /app/vendor/R/lib64/R/doc/html
 touch /app/vendor/R/lib64/R/doc/html/R.css
 
-echo "GCC Version **********************************************"
-gcc --version
+
 # install dependencies from CRAN
 echo "Executing init.r script" | indent
 
