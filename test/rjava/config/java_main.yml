@@ -15,4 +15,5 @@
 
 # Configuration for the Tomcat container
 ---
-java_main_class: com.pivotalservices.java2r.Forecast
+#java_main_class: com.pivotalservices.java2r.Forecast
+java_main_class: org.springframework.boot.loader.JarLauncher
