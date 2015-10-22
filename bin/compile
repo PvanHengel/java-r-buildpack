@@ -26,6 +26,14 @@ function read_var() {
   echo $(head -n 1 $1)
 }
 
+function package_download() {
+  url="$1"
+  location="$2"
+
+  mkdir -p $location
+  curl $url --location -s -o - | tar xzf - -C $location
+}
+
 # clean up leaking environment
 unset GIT_DIR
 
@@ -63,6 +71,35 @@ R_BINARIES="http://${S3_BUCKET}.s3.amazonaws.com/${STACK}/R-${R_VERSION}-binarie
 VENDOR_DIR="$BUILD_DIR/vendor"
 CRAN_MIRROR="http://cran.revolutionanalytics.com"
 
+
+
+JDK_VERSION="1.7.0_51"
+#JDK="openjdk-${JDK_VERSION}"
+JDK="jdk${JDK_VERSION}"
+PLATFORM="lucid"
+ARCH="x86_64"
+#JDK_URL="http://${REPOSITORY_ROOT}/openjdk/${PLATFORM}/${ARCH}/${JDK}.tar.gz"
+JDK_URL="https://s3-us-west-2.amazonaws.com/java-r-buildpack/jdk-7u51-linux-i586.tar.gz"
+echo "JDK_URL: $JDK_URL" | indent
+JAVA_HOME_TEMP="$VENDOR_DIR/$JDK"
+
+
+echo "Downloading and unpacking $JDK into '$VENDOR_DIR'" | indent
+package_download "${JDK_URL}" "${VENDOR_DIR}"
+
+
+echo "JAVA_HOME_TEMP: $JAVA_HOME_TEMP" | indent
+#export JAVA_HOME="/app/vendor/${JDK}"
+export JAVA_HOME=$JAVA_HOME_TEMP
+echo "JAVA_HOME: $JAVA_HOME" | indent
+export JAVA_CPPFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/linux"
+echo "JAVA_CPPFLAGS: $JAVA_CPPFLAGS" | indent
+
+
+
+
+
+
 mkdir -p $CACHE_DIR
 
 # vendor R into the slug
@@ -79,6 +116,10 @@ cp -R $VENDOR_DIR/.apt/* /app/.apt
 
 mkdir -p /app/vendor/R
 cp -R $VENDOR_DIR/R/* /app/vendor/R
+
+# R needs to know where gfortran and glibc header files are
+export PATH="$JAVA_HOME/bin:/app/vendor/R/bin:/app/vendor/gcc/bin:$PATH"
+echo "PATH set to '$PATH'" | indent
 
 # needed for compiling packages
 export PATH="/app/vendor/R/bin:/app/.apt/usr/bin:/app/bin:/usr/ruby1.9.2/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
