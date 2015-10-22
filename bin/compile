@@ -149,12 +149,15 @@ echo "R_INCLUDE set to '$R_INCLUDE'" | indent
 echo "GCC Version **********************************************"
 gcc --version
 which gcc
+mkdir /app/vendor/libreadline
+cp /lib/x86_64-linux-gnu/libreadline.so.6 /app/vendor/libreadline/libreadline.so.5
+
 #ls -R /app/vendor/gcc/bin
 ## find / -iname 'libreadline.*' 
 
 # hack for libreadline shared library version
-cd /lib/x86_64-linux-gnu
-ln -n ./libreadline.so.6 libreadline.so.5
+# cd /lib/x86_64-linux-gnu
+# ln -n ./libreadline.so.6 libreadline.so.5
 ### mkdir /app/vendor/libreadline
 ###cp /app/vendor/gcc/libreadline.so.6 /app/vendor/gcc/libreadline.so.5
 
