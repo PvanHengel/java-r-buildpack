@@ -160,3 +160,10 @@ echo "R $R_VERSION successfully installed" | indent
 rm -rf $VENDOR_DIR/R
 mkdir -p $VENDOR_DIR/R
 cp -R /app/vendor/R/* $VENDOR_DIR/R
+
+# setup rjava
+echo "Calling R CMD javareconf" | indent
+#/app/vendor/${JDK}/bin/java -version
+echo "PATH set to '$PATH'" | indent
+R CMD javareconf
+
