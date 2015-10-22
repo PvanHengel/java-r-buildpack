@@ -189,5 +189,5 @@ cp -R /app/vendor/R/* $VENDOR_DIR/R
 echo "Calling R CMD javareconf" | indent
 #/app/vendor/${JDK}/bin/java -version
 echo "PATH set to '$PATH'" | indent
-R CMD javareconf
+### R CMD javareconf
 
