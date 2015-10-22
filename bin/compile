@@ -150,7 +150,7 @@ echo "GCC Version **********************************************"
 gcc --version
 which gcc
 mkdir /app/vendor/libreadline
-cp /lib/x86_64-linux-gnu/libreadline.so.6 /app/vendor/libreadline/libreadline.so.5
+cp /lib/x86_64-linux-gnu/libreadline.so.6 /app/vendor/libreadline.so.5
 
 #ls -R /app/vendor/gcc/bin
 ## find / -iname 'libreadline.*' 
