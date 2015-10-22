@@ -149,7 +149,7 @@ echo "R_INCLUDE set to '$R_INCLUDE'" | indent
 echo "GCC Version **********************************************"
 gcc --version
 which gcc
-ls /app/vendor/gcc/bin
+ls -a1 /app/vendor/gcc/bin
 
 
 # hack for libreadline shared library version
