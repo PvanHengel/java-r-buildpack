@@ -150,7 +150,7 @@ echo "GCC Version **********************************************"
 gcc --version
 which gcc
 #ls -R /app/vendor/gcc/bin
-sudo find / -iname 'libreadline.*' 
+find / -iname 'libreadline.*' 
 
 # hack for libreadline shared library version
 # cd /lib
@@ -158,7 +158,7 @@ sudo find / -iname 'libreadline.*'
 ### mkdir /app/vendor/libreadline
 ###cp /app/vendor/gcc/libreadline.so.6 /app/vendor/gcc/libreadline.so.5
 
-cp /lib/x86_64-linux-gnu/libreadline.so.6 /lib/x86_64-linux-gnu/libreadline.so.5
+#cp /lib/x86_64-linux-gnu/libreadline.so.6 /lib/x86_64-linux-gnu/libreadline.so.5
 
 
 # copy over 'r' environment
