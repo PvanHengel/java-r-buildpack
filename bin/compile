@@ -53,7 +53,8 @@ R_VERSION="3.1.2"
 BUILD_PACK_VERSION="20150301-1046"
 
 S3_BUCKET="heroku-buildpack-r"
-R_BINARIES="http://${S3_BUCKET}.s3.amazonaws.com/R-${R_VERSION}-binaries-${BUILD_PACK_VERSION}.tar.gz"
+###R_BINARIES="http://${S3_BUCKET}.s3.amazonaws.com/R-${R_VERSION}-binaries-${BUILD_PACK_VERSION}.tar.gz"
+R_BINARIES="https://cran.r-project.org/bin/linux/ubuntu/trusty/r-base_3.2.2.orig.tar.gz"
 echo "R_BINARIES: $R_BINARIES" | indent
 
 VENDOR_DIR="$BUILD_DIR/vendor"
